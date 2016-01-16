@@ -17,7 +17,6 @@ def pattern_generator():
     pattern.extend([random.randint(0,3)])
 
 def play_pattern():
-    sleep(0.5)
     for pin in pattern:
         sleep(speed / 1000.0)
         leds[pin].on()
@@ -72,6 +71,7 @@ def game_over():
 game_setup()
 game_intro()
 while True:
+    sleep(0.5)
     play_pattern()
     detect_pattern()
     if pattern != detected_pattern:
