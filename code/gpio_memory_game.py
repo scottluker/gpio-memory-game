@@ -9,7 +9,7 @@ import random
 setup = [3, 850, 3]
 inputpins= [7, 8, 9, 10]
 outputpins = [22, 23, 24, 25]
-buttons = [Button(pin=pin, bounce_time=0.2) for pin in inputpins]
+buttons = [Button(pin=pin, bounce_time=0.3) for pin in inputpins]
 leds = [LED(pin) for pin in outputpins]
 
 def pattern_generator():
@@ -60,11 +60,11 @@ def game_setup():
 
 def game_intro():
     print ("How Good Is Your Memory?")
-    print ("Press Left Button To Start")
+    print ("Press Left Button To Start\n")
     buttons[0].wait_for_press()
 
 def game_over():
-    print ("\nYour Score Is %d") % (completed * 10)
+    print ("Your Score Is %d") % (completed * 10)
     print ("Press Left Button To Play Again\n")
     buttons[0].wait_for_press()
     game_setup()
@@ -80,6 +80,6 @@ while True:
             game_over()
     else:
         completed += 1
-        if speed > 0.2:
+        if speed > 0.3:
             speed = (speed * 0.80)
         pattern_generator()
