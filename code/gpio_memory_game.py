@@ -64,8 +64,8 @@ def game_intro():
     buttons[0].wait_for_press()
 
 def game_over():
-    print ("\n Your Score Is %d") % (completed * 10)
-    print ("Press Left Button To Play Again \n")
+    print ("\nYour Score Is %d") % (completed * 10)
+    print ("Press Left Button To Play Again\n")
     buttons[0].wait_for_press()
     game_setup()
 
