@@ -27,16 +27,16 @@ def play_pattern():
 def detect_input():
     while True:
         if buttons[0].is_pressed:
-            sleep(0.2)
+            sleep(0.3)
             return 0
         elif buttons[1].is_pressed:
-            sleep(0.2)
+            sleep(0.3)
             return 1
         elif buttons[2].is_pressed:
-            sleep(0.2)
+            sleep(0.3)
             return 2
         elif buttons[3].is_pressed:
-            sleep(0.2)
+            sleep(0.3)
             return 3
 
 def detect_pattern():
