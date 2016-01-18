@@ -1,12 +1,9 @@
 #!/usr/bin/env python
-# GPIO Memory Game Script By Scott Luker
-# https://github.com/scottluker
 
 from gpiozero import LED, Button
 from time import sleep
 import random
 
-setup = [3, 850, 3]
 inputpins= [7, 8, 9, 10]
 outputpins = [22, 23, 24, 25]
 buttons = [Button(pin=pin, bounce_time=0.3) for pin in inputpins]
@@ -18,9 +15,9 @@ def pattern_generator():
 
 def play_pattern():
     for pin in pattern:
-        sleep(speed / 1000.0)
+        sleep(speed)
         leds[pin].on()
-        sleep(speed / 1000.0)
+        sleep(speed)
         leds[pin].off()
 
 def detect_input():
@@ -49,12 +46,12 @@ def detect_pattern():
             break
 
 def game_setup():
-    global pattern, completed, lives, speed
+    global pattern, score, lives, speed
+    score = 0
+    lives = 3
+    speed = 0.85
     pattern = []
-    completed = 0
-    lives = setup[0]
-    speed = float(setup[1])
-    while (len(pattern) != setup[2]):
+    while (len(pattern) != 3):
         pattern_generator()
 
 def game_intro():
@@ -63,7 +60,7 @@ def game_intro():
     buttons[0].wait_for_press()
 
 def game_over():
-    print ("Your Score Is %d") % (completed * 10)
+    print ("Your Score Is %d") % score
     print ("Press Left Button To Play Again\n")
     buttons[0].wait_for_press()
     game_setup()
@@ -79,7 +76,7 @@ while True:
         if lives == 0:
             game_over()
     else:
-        completed += 1
-        if speed > 0.3:
+        score += 10
+        if speed >= 0.4:
             speed = (speed * 0.80)
         pattern_generator()
