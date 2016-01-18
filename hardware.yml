@@ -1,0 +1,12 @@
+- name: 1 x Solderless breadboard
+  img: breadboard
+- name: 4 x Tactile button
+  img: tactile-push-button
+- name: 4 x LED
+  img: led
+- name: 4 x 330 ohm resistor
+  img: resistor-330r
+- name: 9 x Male-to-female jumper leads
+  img: jumper-male-to-female
+ - name: 8 x Male-to-male jumper leads
+  img: jumper-male-to-male
