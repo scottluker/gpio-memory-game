@@ -1,6 +1,6 @@
 - name: 1 x Solderless breadboard
   img: breadboard
-- name: 4 x Tactile button
+- name: 4 x Tactile push button
   img: tactile-push-button
 - name: 4 x LED
   img: led
