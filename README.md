@@ -7,12 +7,12 @@ As well as a Raspberry Pi with an SD card loaded with Raspbian, you'll also need
 
 ### Hardware
 
+- 1 x Solderless breadboard
+- 4 x Tactile push buttons
 - 4 x LEDs
-- 4 x Tactile Buttons
-- 4 x 330 Ohms Resistors
-- 1 x Solderless Breadboard
-- 9 x Male-To-Female Jumper Leads
-- 8 x Male-To-Male Jumper Leads
+- 4 x 330 Ohm resistors
+- 9 x Male-to-female jumper leads
+- 8 x Male-to-male jumper leads
 
 ### Software
 
