@@ -18,6 +18,12 @@ As well as a Raspberry Pi with an SD card loaded with Raspbian, you'll also need
 
 - GPIO Zero for Python 3
 
+See [software installation](software.md)
+
+## Worksheet
+
+- [The worksheet](worksheet.md)
+
 ## Licence
 
 Unless otherwise specified, everything in this repository is covered by the following licence:
