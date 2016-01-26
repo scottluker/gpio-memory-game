@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from gpiozero import LED, Button
 from time import sleep
 import random
@@ -55,13 +53,13 @@ def game_setup():
         pattern_generator()
 
 def game_intro():
-    print ("How Good Is Your Memory?")
-    print ("Press Left Button To Start\n")
+    print("How Good Is Your Memory?")
+    print("Press Left Button To Start\n")
     buttons[0].wait_for_press()
 
 def game_over():
-    print ("Your Score Is %d") % score
-    print ("Press Left Button To Play Again\n")
+    print("Your Score Is %d") % score
+    print("Press Left Button To Play Again\n")
     buttons[0].wait_for_press()
     game_setup()
 
