@@ -52,27 +52,30 @@ def game_setup():
     while (len(pattern) != 3):
         pattern_generator()
 
-def game_intro():
-    print("How Good Is Your Memory?")
-    print("Press Left Button To Start\n")
-    buttons[0].wait_for_press()
+def game_menu():
+    global game_running
+    print("Press the left button to play again,\n")
+    print("or any other button to exit:")
+    leds[0].blink()
+    detected = detect_input()
+    if detected == 0:
+        game_setup()
+        game_running = True
+        leds[0].off
+    else:
+        game_running = False
 
-def game_over():
-    print("Your Score Is %d") % score
-    print("Press Left Button To Play Again\n")
-    buttons[0].wait_for_press()
-    game_setup()
-
-game_setup()
-game_intro()
-while True:
+print("How good is your memory?")
+game_menu()
+while game_running = True:
     sleep(0.5)
     play_pattern()
     detect_pattern()
     if pattern != detected_pattern:
         lives -= 1
         if lives == 0:
-            game_over()
+            print("Your score is %d points") % score
+            game_menu()
     else:
         score += 10
         if speed >= 0.4:
