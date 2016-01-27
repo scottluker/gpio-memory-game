@@ -54,27 +54,25 @@ def game_setup():
 
 def game_menu():
     global game_running
-    print("Press the left button to play again,\n")
+    print("Press the left button to start,")
     print("or any other button to exit:")
-    leds[0].blink()
     detected = detect_input()
     if detected == 0:
         game_setup()
         game_running = True
-        leds[0].off
     else:
         game_running = False
 
 print("How good is your memory?")
 game_menu()
-while game_running = True:
+while game_running == True:
     sleep(0.5)
     play_pattern()
     detect_pattern()
     if pattern != detected_pattern:
         lives -= 1
         if lives == 0:
-            print("Your score is %d points") % score
+            print("\nYour score is %d points\n") % score
             game_menu()
     else:
         score += 10
