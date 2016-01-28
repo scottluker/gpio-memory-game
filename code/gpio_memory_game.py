@@ -2,9 +2,9 @@ from gpiozero import LED, Button
 from time import sleep
 import random
 
-inputpins= [7, 8, 9, 10]
+inputpins = [7, 8, 9, 10]
 outputpins = [22, 23, 24, 25]
-buttons = [Button(pin=pin, bounce_time=0.3) for pin in inputpins]
+buttons = [Button(pin) for pin in inputpins]
 leds = [LED(pin) for pin in outputpins]
 
 def pattern_generator():
@@ -39,7 +39,7 @@ def detect_pattern():
     for pin in pattern:
         detected = detect_input()
         if detected == pin:
-            detected_pattern.extend([pin])
+            detected_pattern.extend([detected])
         else:
             break
 
@@ -53,26 +53,25 @@ def game_setup():
         pattern_generator()
 
 def game_menu():
-    global game_running
+    global game_over
     print("Press the left button to start,")
     print("or any other button to exit:")
     detected = detect_input()
     if detected == 0:
         game_setup()
-        game_running = True
+        game_over = False
     else:
-        game_running = False
+        game_over = True
 
 print("How good is your memory?")
 game_menu()
-while game_running == True:
-    sleep(0.5)
+while not game_over:
     play_pattern()
     detect_pattern()
     if pattern != detected_pattern:
         lives -= 1
         if lives == 0:
-            print("\nYour score is %d points\n") % score
+            print("\nYour score is %d\n" % score)
             game_menu()
     else:
         score += 10
