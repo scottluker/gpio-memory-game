@@ -1,5 +1,6 @@
 # GPIO Memory Game
-Learn how to make a memory game using the Raspberry Pi's GPIO pins.
+
+Make your own memory game with your Raspberry Pi and some electronic components. Using buttons and LEDs is an easy way to get started with GPIO Zero and make your projects more interactive.
 
 ## Requirements
 
