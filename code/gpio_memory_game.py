@@ -37,44 +37,38 @@ def detect_pattern():
     global detected_pattern
     detected_pattern = []
     for pin in pattern:
-        detected = detect_input()
-        if detected == pin:
-            detected_pattern.extend([detected])
+        if detect_input() == pin:
+            detected_pattern.extend([pin])
         else:
             break
 
 def game_setup():
-    global pattern, score, lives, speed
+    global game_over, pattern, score, lives, speed
     score = 0
     lives = 3
     speed = 0.85
     pattern = []
     while (len(pattern) != 3):
         pattern_generator()
-
-def game_menu():
-    global game_over
     print("Press the left button to start,")
-    print("or any other button to exit:")
-    detected = detect_input()
-    if detected == 0:
-        game_setup()
+    print("or any other button to exit\n")
+    if detect_input() == 0:
         game_over = False
     else:
         game_over = True
 
 print("How good is your memory?")
-game_menu()
+game_setup()
 while not game_over:
     play_pattern()
     detect_pattern()
-    if pattern != detected_pattern:
-        lives -= 1
-        if lives == 0:
-            print("\nYour score is %d\n" % score)
-            game_menu()
-    else:
+    if pattern == detected_pattern:
         score += 10
-        if speed >= 0.4:
-            speed = (speed * 0.80)
+        if speed >= 0.2:
+            speed = (speed * 0.8)
         pattern_generator()
+    else:
+        lives -= 1
+    if lives == 0:
+        print("Your score is %s points\n" % score)
+        game_setup()
