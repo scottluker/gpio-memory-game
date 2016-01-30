@@ -55,7 +55,7 @@ def game_setup():
 def game_menu():
     global game_over
     print("Press the left button to start,")
-    print("or any other button to exit:")
+    print("or any other button to exit")
     detected = detect_input()
     if detected == 0:
         game_setup()
