@@ -37,9 +37,8 @@ def detect_pattern():
     global detected_pattern
     detected_pattern = []
     for pin in pattern:
-        detected = detect_input()
-        if detected == pin:
-            detected_pattern.extend([detected])
+        if detect_input() == pin:
+            detected_pattern.extend([pin])
         else:
             break
 
@@ -55,9 +54,8 @@ def game_setup():
 def game_menu():
     global game_over
     print("Press the left button to start,")
-    print("or any other button to exit")
-    detected = detect_input()
-    if detected == 0:
+    print("or any other button to exit\n")
+    if detect_input() == 0:
         game_setup()
         game_over = False
     else:
@@ -71,10 +69,10 @@ while not game_over:
     if pattern != detected_pattern:
         lives -= 1
         if lives == 0:
-            print("\nYour score is %d\n" % score)
+            print("Your score is %s points\n" % score)
             game_menu()
     else:
         score += 10
-        if speed >= 0.4:
-            speed = (speed * 0.80)
+        if speed >= 0.2:
+            speed = (speed * 0.8)
         pattern_generator()
