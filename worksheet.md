@@ -5,6 +5,7 @@ In this resource, you will create a memory game in Python with your Raspberry Pi
 ## Connecting the components
 
 ## What's next?
+
 - You could change the variable values to make the game easier or more difficult.
--
+- 
 -  
