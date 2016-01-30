@@ -66,13 +66,13 @@ game_menu()
 while not game_over:
     play_pattern()
     detect_pattern()
-    if pattern != detected_pattern:
-        lives -= 1
-        if lives == 0:
-            print("Your score is %s points\n" % score)
-            game_menu()
-    else:
+    if pattern == detected_pattern:
         score += 10
         if speed >= 0.2:
             speed = (speed * 0.8)
-        pattern_generator()
+        pattern_generator()    
+    else:
+        lives -= 1
+    if lives == 0:
+        print("Your score is %s points\n" % score)
+        game_menu()
