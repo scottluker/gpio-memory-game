@@ -44,16 +44,16 @@ def detect_pattern():
 
 def game_setup():
     global game_over, pattern, score, lives, speed
+    score = 0
+    lives = 3
+    speed = 0.85
+    pattern = []
+    while (len(pattern) != 3):
+        pattern_generator()
     print("Press the left button to start,")
     print("or any other button to exit\n")
     if detect_input() == 0:
         game_over = False
-        score = 0
-        lives = 3
-        speed = 0.85
-        pattern = []
-        while (len(pattern) != 3):
-            pattern_generator()
     else:
         game_over = True
 
