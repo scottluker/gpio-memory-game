@@ -34,13 +34,10 @@ def detect_input():
             return 3
 
 def detect_pattern():
-    global detected_pattern
-    detected_pattern = []
     for pin in pattern:
-        if detect_input() == pin:
-            detected_pattern.extend([pin])
-        else:
-            break
+        if detect_input() != pin:
+            return False
+    return True
 
 def game_setup():
     global game_over, pattern, score, lives, speed
@@ -61,8 +58,7 @@ print("How good is your memory?")
 game_setup()
 while not game_over:
     play_pattern()
-    detect_pattern()
-    if pattern == detected_pattern:
+    if detect_pattern():
         score += 10
         if speed >= 0.2:
             speed = (speed * 0.8)
