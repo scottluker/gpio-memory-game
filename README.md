@@ -23,7 +23,7 @@ As well as a Raspberry Pi with an SD card loaded with Raspbian, you'll also need
 
 See [software installation](software.md)
 
-## Worksheet
+## The worksheet
 
 - [The worksheet](worksheet.md)
 
