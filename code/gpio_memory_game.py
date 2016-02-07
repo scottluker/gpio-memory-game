@@ -7,9 +7,14 @@ outputpins = [22, 23, 24, 25]
 buttons = [Button(pin) for pin in inputpins]
 leds = [LED(pin) for pin in outputpins]
 
-def pattern_generator():
+players_lives = 3
+round_speed = 0.80
+difficulty = 1
+
+def pattern_generator(number):
     global pattern
-    pattern.extend([random.randint(0,3)])
+    for i in range(number):
+        pattern.extend([random.randint(0,3)])
 
 def play_pattern():
     for pin in pattern:
@@ -40,31 +45,34 @@ def detect_pattern():
     return True
 
 def game_setup():
-    global game_over, pattern, score, lives, speed
+    global pattern, score, lives, speed
+    lives = players_lives
+    speed = round_speed
     score = 0
-    lives = 3
-    speed = 0.85
     pattern = []
-    while (len(pattern) != 3):
-        pattern_generator()
-    print("Press the left button to start,")
-    print("or any other button to exit\n")
+    pattern_generator(difficulty)
+
+def game_menu():
+    global game_over
+    print("\nPress the left button to start,")
+    print("or any other button to exit")
     if detect_input() == 0:
+        game_setup()
         game_over = False
     else:
         game_over = True
 
 print("How good is your memory?")
-game_setup()
+game_menu()
 while not game_over:
     play_pattern()
     if detect_pattern():
         score += 10
         if speed >= 0.2:
-            speed = (speed * 0.8)
-        pattern_generator()
+            speed = (speed * 0.80)
+        pattern_generator(difficulty)
     else:
         lives -= 1
     if lives == 0:
-        print("Your score is %s points\n" % score)
-        game_setup()
+        print("\nYour score is %s points" % score)
+        game_menu()
