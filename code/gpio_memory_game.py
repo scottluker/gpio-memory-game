@@ -73,6 +73,7 @@ while not game_over:
         pattern_generator(difficulty)
     else:
         lives -= 1
+    sleep(0.5)
     if lives == 0:
         print("\nYour score is %s points" % score)
         game_menu()
