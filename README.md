@@ -2,7 +2,7 @@
 
 ![GPIO Memory Game](cover.png)
 
-Make your own memory game with your Raspberry Pi and some electronic components. Using buttons and LEDs is an easy way to get started with the GPIO Zero library for Python. Buttons and LEDs can also make your projects more interactive.
+In this resource, you will create a memory game in Python with your Raspberry Pi and a selection of electronic components. You also will be using the GPIO Zero library, which means you can easily control the Raspberry Pi's GPIO pins from your program to turn LEDs on or off and to detect when a button has been pressed.
 
 ## Requirements
 
