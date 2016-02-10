@@ -7,7 +7,7 @@ outputpins = [22, 23, 24, 25]
 buttons = [Button(pin) for pin in inputpins]
 leds = [LED(pin) for pin in outputpins]
 
-player_lives = 1
+player_lives = 3
 round_speed = 0.8
 difficulty = 1
 
