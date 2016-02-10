@@ -12,4 +12,4 @@ followed by:
 sudo apt-get upgrade
 ```
 
-This will make sure that your Raspberry Pi has a fully up-to-date SD card image which includes the GPIO Zero library.
+This will insure that your Raspberry Pi has a fully up-to-date SD card image which includes the GPIO Zero library.
