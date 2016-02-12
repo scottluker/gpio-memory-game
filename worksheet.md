@@ -22,25 +22,80 @@ To begin, you're going to connect all the components together with your Raspberr
 
 ![](images/gpio-memory-game_4.png)
 
-## import modules / setup buttons and leds
-
 ## create pattern_generator() and play_pattern()
+
+```Python
+from gpiozero import LED
+from time import sleep
+import random
+```
+```Python
+outputpins = [22, 23, 24, 25]
+leds = [LED(pin) for pin in outputpins]
+```
+
+```Python
+def pattern_generator(number):
+    global pattern
+    for i in range(number):
+        pattern.extend([random.randint(0,3)])
+```
+
+```Python
+def play_pattern():
+    for pin in pattern:
+        sleep(speed)
+        leds[pin].on()
+        sleep(speed)
+        leds[pin].off()
+```
+
 
 ## create detect_input() and detect_pattern()
 
-## combine code so far
+```Python
+from gpiozero import LED, Button
+```
 
-## create game_setup()
+```Python
+inputpins = [7, 8, 9, 10]
+outputpins = [22, 23, 24, 25]
+buttons = [Button(pin) for pin in inputpins]
+leds = [LED(pin) for pin in outputpins]
+```
 
-## create game_menu()
+```Python
+def detect_input():
+    while True:
+        if buttons[0].is_pressed:
+            sleep(0.3)
+            return 0
+        elif buttons[1].is_pressed:
+            sleep(0.3)
+            return 1
+        elif buttons[2].is_pressed:
+            sleep(0.3)
+            return 2
+        elif buttons[3].is_pressed:
+            sleep(0.3)
+            return 3
+```
 
-## create game while loop
+```Python
+def detect_pattern():
+    for pin in pattern:
+        if detect_input() != pin:
+            return False
+    return True
+```
+
+## Testing The Code So Far
+
+## create game_setup(), game_menu() and game while loop
 
 ## complete code
 
 
 ## What's next?
 
--
 - You could create an extra menu to change the round speed, difficulty and player's lives.
--  
