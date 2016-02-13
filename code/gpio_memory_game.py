@@ -7,10 +7,11 @@ outputpins = [22, 23, 24, 25]
 button = [Button(pin) for pin in inputpins]
 led = [LED(pin) for pin in outputpins]
 
-red = 0
-blue = 1
-green = 2
-yellow = 3
+# Order of colors, from left to right
+red = 0 # First
+blue = 1 # Second
+green = 2 # Third
+yellow = 3 # Forth
 colors = [red, blue, green, yellow]
 
 def pattern_generator(n):

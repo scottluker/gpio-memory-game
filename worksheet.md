@@ -33,8 +33,8 @@ import random
 ```Python
 inputpins = [7, 8, 9, 10]
 outputpins = [22, 23, 24, 25]
-buttons = [Button(pin) for pin in inputpins]
-leds = [LED(pin) for pin in outputpins]
+button = [Button(pin) for pin in inputpins]
+led = [LED(pin) for pin in outputpins]
 ```
 
 ```Python
@@ -58,9 +58,9 @@ def pattern_generator(n):
 def play_pattern():
     for color in pattern:
         sleep(speed)
-        leds[color].on()
+        led[color].on()
         sleep(speed)
-        leds[color].off()
+        led[color].off()
 ```
 
 **Testing The Code**
@@ -78,7 +78,7 @@ play_pattern()
 def detect_input():
     while True:
         for color in colors:
-            if buttons[color].is_pressed:
+            if button[color].is_pressed:
                 sleep(0.3)
                 return color
 ```
