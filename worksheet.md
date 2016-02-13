@@ -22,39 +22,12 @@ To begin, you're going to connect all the components together with your Raspberr
 
 ![](images/gpio-memory-game_4.png)
 
-## create pattern_generator() and play_pattern()
-
-```Python
-from gpiozero import LED
-from time import sleep
-import random
-```
-```Python
-outputpins = [22, 23, 24, 25]
-leds = [LED(pin) for pin in outputpins]
-```
-
-```Python
-def pattern_generator(number):
-    global pattern
-    for i in range(number):
-        pattern.extend([random.randint(0,3)])
-```
-
-```Python
-def play_pattern():
-    for pin in pattern:
-        sleep(speed)
-        leds[pin].on()
-        sleep(speed)
-        leds[pin].off()
-```
-
-
-## create detect_input() and detect_pattern()
+## import modules and setup gpiozero
 
 ```Python
 from gpiozero import LED, Button
+from time import sleep
+import random
 ```
 
 ```Python
@@ -63,6 +36,35 @@ outputpins = [22, 23, 24, 25]
 buttons = [Button(pin) for pin in inputpins]
 leds = [LED(pin) for pin in outputpins]
 ```
+
+## create pattern_generator() and play_pattern()
+
+```Python
+def pattern_generator(n):
+    global pattern
+    for i in range(n):
+        pattern.extend([random.choice(leds)])
+```
+
+```Python
+def play_pattern():
+    for led in pattern:
+        sleep(speed)
+        led.on()
+        sleep(speed)
+        led.off()
+```
+
+**Testing The Code**
+
+```Python
+speed = 1
+pattern = []
+pattern_generator(4)
+play_pattern()
+```
+
+## create detect_input() and detect_pattern()
 
 ```Python
 def detect_input():
@@ -89,12 +91,9 @@ def detect_pattern():
     return True
 ```
 
-## Testing The Code So Far
-
 ## create game_setup(), game_menu() and game while loop
 
-## complete code
-
+## completed game
 
 ## What's next?
 
