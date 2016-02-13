@@ -37,22 +37,30 @@ buttons = [Button(pin) for pin in inputpins]
 leds = [LED(pin) for pin in outputpins]
 ```
 
+```Python
+red = 0
+blue = 1
+green = 2
+yellow = 3
+colors = [red, blue, green, yellow]
+```
+
 ## create pattern_generator() and play_pattern()
 
 ```Python
 def pattern_generator(n):
     global pattern
     for i in range(n):
-        pattern.extend([random.choice(leds)])
+        pattern.extend([random.choice(colors)])
 ```
 
 ```Python
 def play_pattern():
-    for led in pattern:
+    for color in pattern:
         sleep(speed)
-        led.on()
+        leds[color].on()
         sleep(speed)
-        led.off()
+        leds[color].off()
 ```
 
 **Testing The Code**
@@ -69,24 +77,16 @@ play_pattern()
 ```Python
 def detect_input():
     while True:
-        if buttons[0].is_pressed:
-            sleep(0.3)
-            return 0
-        elif buttons[1].is_pressed:
-            sleep(0.3)
-            return 1
-        elif buttons[2].is_pressed:
-            sleep(0.3)
-            return 2
-        elif buttons[3].is_pressed:
-            sleep(0.3)
-            return 3
+        for color in colors:
+            if buttons[color].is_pressed:
+                sleep(0.3)
+                return color
 ```
 
 ```Python
 def detect_pattern():
-    for pin in pattern:
-        if detect_input() != pin:
+    for color in pattern:
+        if detect_input() != color:
             return False
     return True
 ```
